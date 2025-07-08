@@ -112,11 +112,11 @@ YOLO_DEFAULT_TASK_TYPE = YOLO_DEFAULT_TASK_TYPE.split(",")
 YOLO_DEFAULT_WEIGHTS = os.getenv(
     "YOLO_DEFAULT_WEIGHTS", default=DEFAULT_MODEL_PATH
 )
-YOLO_DEFAULT_WEIGHTS = (
-    YOLO_DEFAULT_WEIGHTS.split(",")
-    if YOLO_DEFAULT_WEIGHTS
-    else [None]
-)
+#YOLO_DEFAULT_WEIGHTS = (
+#    YOLO_DEFAULT_WEIGHTS.split(",")
+#    if YOLO_DEFAULT_WEIGHTS
+#    else [None]
+#)
 
 
 # Variables related to mlfow
