@@ -170,6 +170,7 @@ class TrainArgsSchema(marshmallow.Schema):
         metadata={
             "description": "The type of task for the model:\n"
             '"seg" for object segmentation model\n'
+            'The one available is "seg"',
             "enum": config.YOLO_DEFAULT_TASK_TYPE,
         },
         load_default="det",
