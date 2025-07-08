@@ -1,0 +1,9 @@
+path: '/srv/socib-beach-wracks-identification/data/processed' #dataset root dir
+train: images/train #training split (relative to 'path')
+val: images/val #validation split (relative to 'path') 
+test: images/test #testing split (relative to 'path')
+
+# Classes
+names:
+  0: dense wrack
+  1: intermediate wrack
