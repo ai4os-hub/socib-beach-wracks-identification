@@ -81,6 +81,7 @@ class PredArgsSchema(marshmallow.Schema):
         metadata={
             "description": "The type of task for load the pretrained model:\n"
             '"seg" for object segmentation model\n'
+            'The one available is "seg"',
             "enum": config.YOLO_DEFAULT_TASK_TYPE,
         },
         load_default=config.YOLO_DEFAULT_TASK_TYPE[0],
