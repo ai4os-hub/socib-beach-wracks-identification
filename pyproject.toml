@@ -3,12 +3,12 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "socib_beach_wracks_identification"
+name = "socib_beach_wracks_identification_api"
 description = "DESCRIPTION"
 # !! Authors and Authors_emails are taken from setup.py. Otherwise wrongly rendered !!
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "AGPL-3.0-only" }
+license = "AGPL-3.0-only"
 classifiers = [
     "Intended Audience :: Information Technology",
     "Intended Audience :: AI/ML/DL Researchers",
@@ -36,7 +36,7 @@ addopts = "--import-mode=importlib"
 packages = ["socib_beach_wracks_identification_api", "socib_beach_wracks_identification_api.api"]
 
 [tool.setuptools.package-dir]
-"socib_beach_wracks_identification.api" = "api"
+"socib_beach_wracks_identification_api.api" = "api"
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
