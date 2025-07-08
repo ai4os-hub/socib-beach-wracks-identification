@@ -45,7 +45,7 @@ MODEL_LIST = [
 ]
 
 # Default AI model
-MODEL_NAME = os.getenv("MODEL_NAME", default="yolo11m_beach_wracks_identification")
+MODEL_NAME = os.getenv("MODEL_NAME", default="socib_beach_wracks_identification_api")
 
 # Get AI model metadata
 MODEL_METADATA = metadata.metadata(MODEL_NAME)
