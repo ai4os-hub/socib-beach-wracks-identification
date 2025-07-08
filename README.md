@@ -32,7 +32,7 @@ apt install -y libglib2.0-0
 ├── README.md               <- The top-level README for developers using this project.
 ├── VERSION                 <- Version file indicating the version of the model
 │
-├── socib-beach-wracks-identification_api
+├── socib_beach_wracks_identification_api
 │   ├── README.md           <- Instructions on how to integrate your model with DEEPaaS.
 │   ├── __init__.py         <- Makes socib-beach-wracks-identification a Python module
 │   ├── config.py           <- Module to define CONSTANTS used across the AI-model python package
@@ -104,7 +104,7 @@ optional options:
 # 📁 Dataset Preparation
 - To train the socib-beach-wracks-identification module on your own dataset, your images may have different formats (e.g., PNG, JPG) but your annotations must be saved in yolo format (.txt). Please organize your data in the following structure:
 ```
-socib-beach-wracks-identification
+socib_beach_wracks_identification
 │
 └── data
     ├── processed
@@ -157,7 +157,7 @@ names:
 The `train`, `val` and `test` fields specify the paths to the directories containing the training, validation, and testing images, respectively.
 `names` is a dictionary of class names. The order of the names should match the order of the object class indices in the YOLO dataset files.
 
-><span style="color:Blue">**Note:**</span> The default model was trained with rather small images (640x480) to avoid downsampling in YOLO training. A sample of the data and the folder structure for training the model is provided in `/socib-beach-wracks-identification/tests/data/seg`. To re-train the model with your own data, place it under `/socib-beach-wracks-identification/data/processed`. 
+><span style="color:Blue">**Note:**</span> The default model was trained with rather small images (640x480) to avoid downsampling in YOLO training. A sample of the data and the folder structure for training the model is provided in `/socib_beach_wracks_identification/tests/data/seg`. To re-train the model with your own data, place it under `/socib_beach_wracks_identification/data/processed`. 
 
 # 📦 Available Models
 

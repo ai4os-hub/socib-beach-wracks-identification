@@ -188,7 +188,7 @@ class TrainArgsSchema(marshmallow.Schema):
         metadata={
             "description": "Path to the config data file"
             "e.g., 'root/path/to/mydata/data.yaml' or "
-            "if it is in the 'path/to/socib-beach-wracks-identification/data/raw' just"
+            "if it is in the 'path/to/socib_beach_wracks_identification/data/raw' just"
             "mydata/data.yaml"
         },
         allow_none=True,

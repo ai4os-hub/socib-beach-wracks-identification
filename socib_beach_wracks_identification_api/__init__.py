@@ -2,7 +2,7 @@
 Package to create dataset, build training and prediction pipelines.
 
 This file should define or import all the functions needed to operate the
-methods defined at socib-beach-wracks-identification/api.py. Complete the TODOs
+methods defined at socib_beach_wracks_identification/api.py. Complete the TODOs
 with your own code or replace them importing your own functions.
 For example:
 ```py
@@ -13,9 +13,9 @@ from your_module import your_function as training
 
 # TODO: add your imports here
 import logging
-import socib-beach-wracks-identification_api.config as cfg
+import socib_beach_wracks_identification_api.config as cfg
 from ultralytics import YOLO
-import socib-beach-wracks-identification_api.utils as utils
+import socib_beach_wracks_identification_api.utils as utils
 
 
 logger = logging.getLogger(__name__)

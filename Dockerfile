@@ -19,7 +19,7 @@ FROM pytorch/pytorch:${tag}
 
 LABEL maintainer='Jesus Soriano-Gonzalez, Josep Oliver-Sanso'
 LABEL version='0.1.0'
-# Add deep api to socib-beach-wracks-identification model
+# Add deep api to socib_beach_wracks_identification model
 
 # What user branch to clone [!]
 ARG branch=mlflow

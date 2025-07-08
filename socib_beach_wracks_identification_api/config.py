@@ -23,7 +23,7 @@ MY_PARAMETER_INT = int(os.getenv("MY_PARAMETER_INT", default="10"))
 
 
 MLFLOW_RUN_DESCRIPTION = os.getenv(
-    "MODEL_NAME", default="beach wracks identification (detection and segmentation) using yolo11"
+    "MODEL_NAME", default="beach wracks identification"
 )
 MLFLOW_AUTHOR = os.getenv("MLFLOW_AUTHOR", default="Jesus/Josep")
 MLFLOW_MODEL_NAME = (

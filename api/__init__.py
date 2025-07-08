@@ -22,9 +22,9 @@ from ultralytics import YOLO, settings
 from aiohttp.web import HTTPException
 from deepaas.model.v2.wrapper import UploadedFile
 
-import socib-beach-wracks-identification_api as aimodel
+import socib_beach_wracks_identification_api as aimodel
 from . import config, responses, schemas, utils
-from socib-beach-wracks-identification_api.utils import (
+from socib_beach_wracks_identification_api.utils import (
     mlflow_fetch,
     mlflow_logging,
 )

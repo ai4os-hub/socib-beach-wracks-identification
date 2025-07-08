@@ -54,7 +54,7 @@ def task_type_param(request):
 
 
 # Fixture for the 'model' parameter
-@pytest.fixture(scope="module", params=["socib-beach-wracks-identification.yaml"])
+@pytest.fixture(scope="module", params=["socib_beach_wracks_identification.yaml"])
 def model_param(request):
     return request.param
 

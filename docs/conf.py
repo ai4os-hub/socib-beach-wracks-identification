@@ -37,7 +37,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "socib-beach-wracks-identification"
+project = "socib_beach_wracks_identification"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -158,7 +158,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "socib-beach-wracks-identificationdoc"
+htmlhelp_basename = "socib_beach_wracks_identificationdoc"
 
 
 # -- Options for LaTeX output -------------
@@ -178,8 +178,8 @@ latex_elements = {
 latex_documents = [
     (
         "index",
-        "socib-beach-wracks-identification.tex",
-        "socib-beach-wracks-identification Documentation",
+        "socib_beach_wracks_identification.tex",
+        "socib_beach_wracks_identification Documentation",
         "jsoriano",
         "manual",
     ),
@@ -213,8 +213,8 @@ latex_documents = [
 man_pages = [
     (
         "index",
-        "socib-beach-wracks-identification",
-        "socib-beach-wracks-identification Documentation",
+        "socib_beach_wracks_identification",
+        "socib_beach_wracks_identification Documentation",
         ["jsoriano"],
         1,
     )
@@ -232,10 +232,10 @@ man_pages = [
 texinfo_documents = [
     (
         "index",
-        "socib-beach-wracks-identification",
-        "socib-beach-wracks-identification Documentation",
+        "socib_beach_wracks_identification",
+        "socib_beach_wracks_identification Documentation",
         "jsoriano",
-        "socib-beach-wracks-identification",
+        "socib_beach_wracks_identification",
         "add api to identify beach wracks",
         "Miscellaneous",
     ),
