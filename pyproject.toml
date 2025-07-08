@@ -33,7 +33,7 @@ env = ["DATA_PATH=tests/data", "MODELS_PATH=tests/models"]
 addopts = "--import-mode=importlib"
 
 [tool.setuptools]
-packages = ["socib_beach_wracks_identification", "socib_beach_wracks_identification.api"]
+packages = ["socib_beach_wracks_identification_api", "socib_beach_wracks_identification_api.api"]
 
 [tool.setuptools.package-dir]
 "socib_beach_wracks_identification.api" = "api"
@@ -43,4 +43,4 @@ dependencies = { file = ["requirements.txt"] }
 version = { file = "VERSION" }
 
 [project.entry-points."deepaas.v2.model"]
-socib_beach_wracks_identification = "socib_beach_wracks_identification.api"
+socib_beach_wracks_identification_api = "socib_beach_wracks_identification_api.api"
