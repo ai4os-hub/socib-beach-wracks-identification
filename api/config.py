@@ -79,8 +79,7 @@ MODELS_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models")
 MODELS_PATH = Path(MODELS_PATH)
 
 # Path definition for the default pre-trained models
-DEFAULT_MODEL_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models/default")
-DEFAULT_MODEL_PATH = Path(DEFAULT_MODEL_PATH)
+DEFAULT_MODEL_PATH = MODELS_PATH
 
 REMOTE_PATH = os.getenv("MODELS_PATH", default="models")
 # logging level across API modules can be setup via API_LOG_LEVEL,

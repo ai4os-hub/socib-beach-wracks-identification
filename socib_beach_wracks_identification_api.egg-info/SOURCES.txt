@@ -31,8 +31,7 @@ docs/getting-started.rst
 docs/index.rst
 docs/make.bat
 models/.gitignore
-models/default/yolo11m_170325.pt
-models/mlruns/0/meta.yaml
+models/yolo11m_170325/weights/best.pt
 references/.gitkeep
 reports/.gitkeep
 reports/figures/.gitkeep
