@@ -37,21 +37,17 @@ def json_response(results, **options):
     logger.debug("Response options: %s", options)
 
     try:
-        if options.get("task_type") in ["seg"]:
-            for element in results[0]:
-                # Use the proper `to_json` method to serialize each result
-                prediction = (
-                    element.to_json()
-                    if hasattr(element, "to_json")
-                    else element
-                )
-                if isinstance(prediction, str):
-                    # Convert stringified JSON to actual JSON
-                    prediction = json.loads(prediction)
-                result_data.append(prediction)
-        else:
-            result_data.results[0]
-
+        for element in results[0]:
+            # Use the proper `to_json` method to serialize each result
+            prediction = (
+                element.to_json()
+                if hasattr(element, "to_json")
+                else element
+            )
+            if isinstance(prediction, str):
+                # Convert stringified JSON to actual JSON
+                prediction = json.loads(prediction)
+            result_data.append(prediction)
         return result_data
 
     except Exception as err:

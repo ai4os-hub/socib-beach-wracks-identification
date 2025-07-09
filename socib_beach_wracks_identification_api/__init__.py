@@ -61,6 +61,7 @@ def predict(
                 "files",
                 "accept",
                 "task_type",
+                "mlflow_fetch"
             ],
         )
         result = model.predict(
