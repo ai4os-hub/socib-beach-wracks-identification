@@ -16,7 +16,7 @@ import logging
 import socib_beach_wracks_identification_api.config as cfg
 from ultralytics import YOLO
 import socib_beach_wracks_identification_api.utils as utils
-
+import os
 
 logger = logging.getLogger(__name__)
 logger.setLevel(cfg.LOG_LEVEL)
