@@ -41,7 +41,7 @@ MODEL_LIST = [
     "yolo11l.yaml",
     "yolo11l.pt",
     "yolo11x.yaml",
-    "yolo11x.pt", 
+    "yolo11x.pt"
 ]
 
 # Default AI model
@@ -79,7 +79,7 @@ MODELS_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models")
 MODELS_PATH = Path(MODELS_PATH)
 
 # Path definition for the default pre-trained models
-DEFAULT_MODEL_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models/yolo11m_beach_wracks_identification/best.pt")
+DEFAULT_MODEL_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models/default")
 DEFAULT_MODEL_PATH = Path(DEFAULT_MODEL_PATH)
 
 REMOTE_PATH = os.getenv("MODELS_PATH", default="models")
@@ -103,20 +103,19 @@ except KeyError as err:
 YOLO_DEFAULT_TASK_TYPE = os.getenv(
     "YOLO_DEFAULT_TASK_TYPE", default="seg" 
 )
-YOLO_DEFAULT_TASK_TYPE = YOLO_DEFAULT_TASK_TYPE.split(",")
 
 
 # Specify default timestamped weights for your trained models
 # to be utilized during
 # prediction. Format them as timestamp1, timestamp2, timestamp3, ...
 YOLO_DEFAULT_WEIGHTS = os.getenv(
-    "YOLO_DEFAULT_WEIGHTS", default=DEFAULT_MODEL_PATH
+    "YOLO_DEFAULT_WEIGHTS", default="yolo11m_170325.pt"
 )
-#YOLO_DEFAULT_WEIGHTS = (
-#    YOLO_DEFAULT_WEIGHTS.split(",")
-#    if YOLO_DEFAULT_WEIGHTS
-#    else [None]
-#)
+YOLO_DEFAULT_WEIGHTS = (
+    YOLO_DEFAULT_WEIGHTS.split(",")
+    if YOLO_DEFAULT_WEIGHTS
+    else [None]
+)
 
 
 # Variables related to mlfow
