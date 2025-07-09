@@ -16,6 +16,11 @@ api/config.py
 api/responses.py
 api/schemas.py
 api/utils.py
+api/__pycache__/__init__.cpython-310.pyc
+api/__pycache__/config.cpython-310.pyc
+api/__pycache__/responses.cpython-310.pyc
+api/__pycache__/schemas.cpython-310.pyc
+api/__pycache__/utils.cpython-310.pyc
 data/processed/.gitignore
 data/raw/.gitignore
 docker/.gitkeep
@@ -27,6 +32,7 @@ docs/index.rst
 docs/make.bat
 models/.gitignore
 models/default/yolo11m_170325.pt
+models/mlruns/0/meta.yaml
 references/.gitkeep
 reports/.gitkeep
 reports/figures/.gitkeep
@@ -47,6 +53,9 @@ socib_beach_wracks_identification_api.egg-info/dependency_links.txt
 socib_beach_wracks_identification_api.egg-info/entry_points.txt
 socib_beach_wracks_identification_api.egg-info/requires.txt
 socib_beach_wracks_identification_api.egg-info/top_level.txt
+socib_beach_wracks_identification_api/__pycache__/__init__.cpython-310.pyc
+socib_beach_wracks_identification_api/__pycache__/config.cpython-310.pyc
+socib_beach_wracks_identification_api/__pycache__/utils.cpython-310.pyc
 tests/conftest.py
 tests/test_deepaas.py
 tests/configurations/deepaas_1.conf
