@@ -76,7 +76,7 @@ def predict(
 if __name__ == "__main__":
     args = {
         "files": ["tests/data/seg/images/test/clm_s_03_2015-05-10-14-00.png"],
-        "model": "yolo11m_beach_wracks_identification/best.pt",
+        "model": os.getenv("YOLO_DEFAULT_WEIGHTS"),
         "imgsz": [704, 512],
         "conf": 0.25,
         "iou": 0.5,

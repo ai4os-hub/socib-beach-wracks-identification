@@ -52,8 +52,9 @@ apt install -y libglib2.0-0
 ├── docs                   <- A default Sphinx project; see sphinx-doc.org for details
 │
 ├── models                 <- Folder to store your models. Includes the default SOCIB model weights
-│   └── yolo11m_beach_wracks_identification
-│       └──best.pt
+│   └── yolo11m_170325
+│       └── weights
+│           └──best.pt
 │
 ├── reports                <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures            <- Generated graphics and figures to be used in reporting

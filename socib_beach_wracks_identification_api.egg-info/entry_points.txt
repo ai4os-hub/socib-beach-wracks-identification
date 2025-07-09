@@ -1,2 +1,0 @@
-[deepaas.v2.model]
-socib_beach_wracks_identification_api = socib_beach_wracks_identification_api.api
