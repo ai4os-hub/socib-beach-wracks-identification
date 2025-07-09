@@ -108,7 +108,7 @@ optional options:
 socib_beach_wracks_identification
 │
 └── data
-    ├── processed
+    └── processed
         ├──  images
         │    ├── train
         │    │   ├── img1.jpg
