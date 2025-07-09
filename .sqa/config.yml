@@ -1,4 +1,10 @@
 # .sqa/config.yml - jenkins-pipeline-library configuration file
+config:
+  project_repos:
+    socib-beach-wracks-identification:
+      container_testing_service: thisrepo-testing
+      docker_build_options: '--no-cache'
+
 sqa_criteria:
   qc_style:
     repos:
