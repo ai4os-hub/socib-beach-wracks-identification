@@ -109,7 +109,7 @@ YOLO_DEFAULT_TASK_TYPE = os.getenv(
 # to be utilized during
 # prediction. Format them as timestamp1, timestamp2, timestamp3, ...
 YOLO_DEFAULT_WEIGHTS = os.getenv(
-    "YOLO_DEFAULT_WEIGHTS", default="yolo11m_170325.pt"
+    "YOLO_DEFAULT_WEIGHTS", default=f'{DEFAULT_MODEL_PATH}/yolo11m_170325.pt'
 )
 YOLO_DEFAULT_WEIGHTS = (
     YOLO_DEFAULT_WEIGHTS.split(",")
