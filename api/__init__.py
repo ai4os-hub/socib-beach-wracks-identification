@@ -96,8 +96,6 @@ def predict(**args):
                 path, config.MODELS_PATH
             )
 
-        task_type = args["task_type"]
-
         with tempfile.TemporaryDirectory() as tmpdir:
             for f in [args["files"]]:
                 shutil.copy(
@@ -151,8 +149,8 @@ def train(**args):
         settings.update(
             {
                 "mlflow": False,
-                #"datasets_dir": config.DATA_PATH,
-                #"model_dir": config.MODELS_PATH,
+                # "datasets_dir": config.DATA_PATH,
+                # "model_dir": config.MODELS_PATH,
                 "wandb": args["disable_wandb"],
             }
         )

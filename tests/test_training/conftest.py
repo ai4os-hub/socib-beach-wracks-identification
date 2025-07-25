@@ -54,7 +54,7 @@ def task_type_param(request):
 
 
 # Fixture for the 'model' parameter
-@pytest.fixture(scope="module", 
+@pytest.fixture(scope="module",
                 params=["socib_beach_wracks_identification.yaml"])
 def model_param(request):
     return request.param
@@ -468,7 +468,7 @@ def training(train_kwds):
     train_kwds["data"] = os.path.join(
         TEST_DATA_PATH, "seg/label.yaml"
     )
-      
+
     path = api.utils.check_paths_in_yaml(
         train_kwds["data"], TEST_DATA_PATH
     )

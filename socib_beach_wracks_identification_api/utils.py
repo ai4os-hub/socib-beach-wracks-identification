@@ -347,7 +347,7 @@ def mlflow_logging(model, num_epochs, args):
             print(f"Detected boxes: {data}")
 
             h, w = result.orig_shape
-           
+
             for i, row in enumerate(data):
                 box = {
                     "x1": row[0] / w,
@@ -358,7 +358,7 @@ def mlflow_logging(model, num_epochs, args):
                 conf = row[-2]
                 class_id = int(row[-1])
                 name = result.names[class_id]
-                
+
                 detection_result = {
                     "name": name,
                     "class": class_id,
@@ -366,20 +366,20 @@ def mlflow_logging(model, num_epochs, args):
                     "box": box,
                 }
                 print(f"Detection result: {detection_result}")
-    
+
                 # Add track ID if available
                 if result.boxes.is_track:
                     detection_result["track_id"] = int(row[-3])
 
                 # Save to results
                 results_all.append(detection_result)
-    
+
         results_output = None
         if results_all:
             # Flatten the nested 'box' dictionary for meaningful column names
             results_all_flattened = []
             MODELS_PATH = os.path.join(args["project"], args["name"])
-            output_file_path = os.path.join(MODELS_PATH, 
+            output_file_path = os.path.join(MODELS_PATH,
                                             "segmentation_results.csv")
             for entry in results_all:
                 flat_entry = entry.copy()
@@ -392,13 +392,13 @@ def mlflow_logging(model, num_epochs, args):
                     results_output.to_csv(output_file_path, index=False)
                     print(f"Segmentation results saved to {output_file_path}")
                     # Log the artifact only after the file is created
-                    mlflow.log_artifact(output_file_path, 
+                    mlflow.log_artifact(output_file_path,
                                         artifact_path="artifacts")
                 except Exception as e:
                     print(f"Error saving segmentation results to file: {e}")
         else:
             print("No segmentations to save.")
-            results_output = [{"segmentation": value} for value in [1, 2, 3, 4]] #nolint
+            results_output = [{"segmentation": value} for value in [1, 2, 3, 4]]  # nolint
 
         # Ensure results_all has valid entries to log the signature in mlflow
 
