@@ -54,6 +54,7 @@ def json_response(results, **options):
         logger.warning("Error converting result to JSON: %s", err)
         raise RuntimeError("Unsupported response type") from err
 
+
 def pdf_response(results, **options):
     """Converts the prediction or training results into pdf return format.
 

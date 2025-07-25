@@ -1,7 +1,6 @@
-path: '/srv/socib_beach_wracks_identification/data/processed' #dataset root dir
-train: images/train #training split (relative to 'path')
-val: images/val #validation split (relative to 'path') 
-test: images/test #testing split (relative to 'path')
+# Dataset configuration file for segmentation task
+train: /srv/socib_beach_wracks_identification/tests/data/seg/train/images
+val: /srv/socib_beach_wracks_identification/tests/data/seg/val/images
 
 # Classes
 names:

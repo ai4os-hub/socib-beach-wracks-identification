@@ -2,7 +2,7 @@
 
 [![Build Status](https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/socib-beach-wracks-identification/main)](https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/socib-beach-wracks-identification/job/main/)
 
-This module provides an AI-powered tool that prioritizes speed, precision, and user-friendliness, offering an exceptional solution for instance segmentation in beach wrack monitoring. It automatically detects and segments beach wracks from RGB images and can distinguish between different densities of wrack accumulation. The module is integrated with [DEEPaaS API](https://github.com/ai4os/DEEPaaS) (platform support) enhancing the functionality and accessibility of the code, making it easier for users to leverage and interact with the pipeline efficiently.
+This module provides an AI-powered tool for instance segmentation in seagrass wracks from beach imagery. It automatically detects and segments beach wracks from RGB images and can distinguish between different densities of wrack accumulation. The module is integrated with [DEEPaaS API](https://github.com/ai4os/DEEPaaS) (platform support) enhancing the functionality and accessibility of the code, making it easier for users to leverage and interact with the pipeline efficiently.
 
 The default model (yolo11m) was trained on [SOCIB](https://www.socib.es/)-derived data ([BWILD dataset](https://doi.org/10.5281/zenodo.12698763)), with its performance enhanced through data augmentation and hyperparameter optimization. The framework is extensible, allowing to use different yolo variants and sizes, fine-tune the models on custom datasets by adjusting hyperparameters, and using transfer learning.
 

@@ -21,6 +21,7 @@ from pathlib import Path
 import random
 
 import numpy as np
+import pandas as pd
 
 import mlflow
 from mlflow import MlflowClient
@@ -34,7 +35,7 @@ from socib_beach_wracks_identification_api import config
 logger = logging.getLogger(__name__)
 logger.setLevel(cfg.LOG_LEVEL)
 
-#Enable mlflow system metrics
+# Enable mlflow system metrics
 mlflow.enable_system_metrics_logging()
 
 BASE_PATH = Path(__file__).resolve(strict=True).parents[1]
@@ -43,8 +44,6 @@ if "MLFLOW_TRACKING_URI" not in os.environ:
     mlflow.set_tracking_uri(mlflow_runs_path)
 else:
     mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
- 
-
 
 client = MlflowClient(tracking_uri=mlflow.get_tracking_uri())
 
@@ -198,7 +197,6 @@ def mlflow_update():
         stage="Archived",
     )
 
-import pandas as pd
 
 def mlflow_logging(model, num_epochs, args):
     mlflow.end_run()  # stop any previous active mlflow run
@@ -244,11 +242,11 @@ def mlflow_logging(model, num_epochs, args):
         print(f"OpenCV Version: {cv2.__version__}")
 
         # Ensure that no random seed is set
-        #random.seed(None)
+        # random.seed(None)
 
         # Specify the path to the folder containing images
         img_folder = data["train"]
-        print ("\nImgFolder", img_folder)
+        print("\nImgFolder", img_folder)
 
         # List all files in the folder
         img_files = [
@@ -283,12 +281,12 @@ def mlflow_logging(model, num_epochs, args):
                 image_array = np.transpose(normalized_img, (2, 0, 1))  # Rearrange to [C, H, W]
                 image_array = np.expand_dims(normalized_img, axis=0)  # Add batch dimension
                 print(f"Processed image shape: {image_array.shape}")
-        
+
                 torch_img = torch.from_numpy(normalized_img).float()
                 torch_img = torch_img.permute(2, 0, 1).unsqueeze(0)
                 torch_img_cpu = torch_img.cpu().numpy()
                 img = torch_img_cpu
-        
+
         # Example input for infer_signature
         example_input = {"image": image_array}
 
@@ -302,7 +300,7 @@ def mlflow_logging(model, num_epochs, args):
         run, active_run = mlflow, mlflow.active_run()
         print("active run id", active_run.info.run_id)
 
-         #get model info        
+        # get model info
         summary_model = model.trainer.model.info()
 
         # Map the tuple to meaningful names
@@ -313,18 +311,16 @@ def mlflow_logging(model, num_epochs, args):
             "GFLOPs": summary_model[3],
         }
         print("\n Summary Model:  ", summary_model_info)
-        
+
         # Convert train_inf to DataFrame
-        #sum_model_info_df = pd.DataFrame(summary_model_info)
+        # sum_model_info_df = pd.DataFrame(summary_model_info)
 
         # logs params in mlflow
- 
         merged_params = {
                 **vars(model.trainer.model.args),
                 **summary_model_info
             }
         run.log_params(merged_params)
-
 
         # Assuming model is an instance of YOLO and img is an input image
         prediction_inf = model(img_path, conf=0.2)
@@ -332,27 +328,26 @@ def mlflow_logging(model, num_epochs, args):
         # Check if GPU is available
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
         # Create list of detection dictionaries
         results_all = []
         if not prediction_inf:
             print(f"No predictions made for image: {img_path}")
             return
-            
+
         for result in prediction_inf:
             print(f"Processing image: {result.path}")
-            
+
             # Check if no detections were made
             if result.boxes.data is None or len(result.boxes.data) == 0:
                 print("No detections found.")
                 continue  # Skip if no detections
-    
+
             # Get bounding box data
             data = result.boxes.data.to(device).tolist()
             print(f"Detected boxes: {data}")
-    
+
             h, w = result.orig_shape
-            
+           
             for i, row in enumerate(data):
                 box = {
                     "x1": row[0] / w,
@@ -375,58 +370,58 @@ def mlflow_logging(model, num_epochs, args):
                 # Add track ID if available
                 if result.boxes.is_track:
                     detection_result["track_id"] = int(row[-3])
-    
+
                 # Save to results
                 results_all.append(detection_result)
-        
+    
         results_output = None
         if results_all:
             # Flatten the nested 'box' dictionary for meaningful column names
             results_all_flattened = []
             MODELS_PATH = os.path.join(args["project"], args["name"])
-            output_file_path = os.path.join(MODELS_PATH, "segmentation_results.csv")
+            output_file_path = os.path.join(MODELS_PATH, 
+                                            "segmentation_results.csv")
             for entry in results_all:
                 flat_entry = entry.copy()
                 box = flat_entry.pop("box")
                 flat_entry.update(box)  # Add x1, y1, x2, y2 as top-level columns
-                results_all_flattened.append(flat_entry)        
+                results_all_flattened.append(flat_entry)
                 results_output = pd.DataFrame(results_all_flattened)
-                #print("\results_output:\n", results_output)
+                # print("\results_output:\n", results_output)
                 try:
                     results_output.to_csv(output_file_path, index=False)
                     print(f"Segmentation results saved to {output_file_path}")
                     # Log the artifact only after the file is created
-                    mlflow.log_artifact(output_file_path, artifact_path="artifacts")
+                    mlflow.log_artifact(output_file_path, 
+                                        artifact_path="artifacts")
                 except Exception as e:
                     print(f"Error saving segmentation results to file: {e}")
         else:
             print("No segmentations to save.")
-            results_output = [{"segmentation": value} for value in [1, 2, 3, 4]]
+            results_output = [{"segmentation": value} for value in [1, 2, 3, 4]] #nolint
 
         # Ensure results_all has valid entries to log the signature in mlflow
-        
+
         # Infer signature from results_output
         if results_output is not None:
             signature = infer_signature(example_input, results_output)
             print("\nSignature inferred successfully.")
             mlflow.pyfunc.log_model(
-            artifact_path="artifacts",
-            python_model=mlflow.pyfunc.PythonModel(),
-            signature=signature,
+                artifact_path="artifacts",
+                python_model=mlflow.pyfunc.PythonModel(),
+                signature=signature,
             )
         else:
             print("\nexample_input or results_output is empty. Could not infer signature.")
-            #Log the model without signature
+            # Log the model without signature
             mlflow.pyfunc.log_model(
-            artifact_path="artifacts",
-            python_model=mlflow.pyfunc.PythonModel()
+                artifact_path="artifacts",
+                python_model=mlflow.pyfunc.PythonModel()
             )
 
-       
         # Get the base directory of artifact_path
         base_dir = os.path.basename(str(model.trainer.save_dir))
         print("\nbase_dir", base_dir)
-
 
         # Log additional artifacts
         mlflow.log_artifacts(

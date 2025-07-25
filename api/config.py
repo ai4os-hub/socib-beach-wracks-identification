@@ -45,7 +45,8 @@ MODEL_LIST = [
 ]
 
 # Default AI model
-MODEL_NAME = os.getenv("MODEL_NAME", default="socib_beach_wracks_identification_api")
+MODEL_NAME = os.getenv("MODEL_NAME", 
+                       default="socib_beach_wracks_identification_api")
 
 # Get AI model metadata
 MODEL_METADATA = metadata.metadata(MODEL_NAME)
@@ -100,7 +101,7 @@ except KeyError as err:
 
 # Specify that the default task is segmentation
 YOLO_DEFAULT_TASK_TYPE = os.getenv(
-    "YOLO_DEFAULT_TASK_TYPE", default="seg" 
+    "YOLO_DEFAULT_TASK_TYPE", default="seg"
 )
 
 

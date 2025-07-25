@@ -60,7 +60,7 @@ def get_metadata():
             "license": config.MODEL_METADATA.get("license"),
             "version": config.MODEL_METADATA.get("version"),
             "models_local": utils.ls_dirs(config.MODELS_PATH),
-            # "models_remote": utils.ls_remote(), 
+            # "models_remote": utils.ls_remote(),
             "datasets": utils.generate_directory_tree(
                 config.DATA_PATH
             ),
@@ -88,7 +88,7 @@ def predict(**args):
     logger.debug("Predict with args: %s", args)
     try:
         if args["model"] is None:
-            args["model"] = config.DEFAULT_MODEL_PATH  # Only segmentation is enabled
+            args["model"] = config.DEFAULT_MODEL_PATH  # Only seg is enabled
 
         else:
             path = os.path.join(args["model"], "weights/best.pt")
@@ -101,7 +101,7 @@ def predict(**args):
         with tempfile.TemporaryDirectory() as tmpdir:
             for f in [args["files"]]:
                 shutil.copy(
-                    f.filename, tmpdir + "/" + os.path.basename(f.original_filename)
+                    f.filename, tmpdir + "/" + os.path.basename(f.original_filename) #nolint
                 )
 
             args["files"] = [
@@ -152,7 +152,7 @@ def train(**args):
             {
                 "mlflow": False,
                 #"datasets_dir": config.DATA_PATH,
-              #  "model_dir": config.MODELS_PATH,
+                #"model_dir": config.MODELS_PATH,
                 "wandb": args["disable_wandb"],
             }
         )
