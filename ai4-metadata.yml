@@ -32,7 +32,7 @@ dates:
   updated: '2024-07-03'
 links:
   source_code: https://github.com/ai4os-hub/socib-beach-wracks-identification
-  docker_image: ai4os-hub/socib-beach-wracks-identification
+  docker_image: ai4oshub/socib-beach-wracks-identification
   ai4_template: ai4-template/1.9.9
 tags:
   - deep learning
