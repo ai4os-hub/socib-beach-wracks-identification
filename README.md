@@ -1,6 +1,6 @@
 # SOCIB Beach wracks identification
 
-[![Build Status](https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/socib-beach-wracks-identification/main)](https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/socib-beach-wracks-identification/job/main/)
+[![Build Status](https://jenkins.cloud.ai4eosc.eu/buildStatus/icon?job=AI4OS-hub/socib-beach-wracks-identification/main)](https://jenkins.cloud.ai4eosc.eu/job/AI4OS-hub/job/socib-beach-wracks-identification/job/main/)
 
 This module provides an AI-powered tool for instance segmentation of seagrass wracks from beach imagery. It automatically detects and segments beach wracks from RGB images and can distinguish between different densities of wrack accumulation. The module is integrated with [DEEPaaS API](https://github.com/ai4os/DEEPaaS) (platform support) enhancing the functionality and accessibility of the code, making it easier for users to leverage and interact with the pipeline efficiently.
 
