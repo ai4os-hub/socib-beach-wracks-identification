@@ -1,4 +1,4 @@
-"""Generic tests environment configuration. This file implement all generic
+socib_beach_wracks_identification"""Generic tests environment configuration. This file implement all generic
 fixtures to simplify model and api specific testing.
 
 Modify this file only if you need to add new fixtures or modify the existing

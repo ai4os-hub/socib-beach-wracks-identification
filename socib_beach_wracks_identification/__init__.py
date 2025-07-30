@@ -13,9 +13,9 @@ from your_module import your_function as training
 
 # TODO: add your imports here
 import logging
-import socib_beach_wracks_identification_api.config as cfg
+import socib_beach_wracks_identification.config as cfg
 from ultralytics import YOLO
-import socib_beach_wracks_identification_api.utils as utils
+import socib_beach_wracks_identification.utils as utils
 import os
 
 logger = logging.getLogger(__name__)

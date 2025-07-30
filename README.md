@@ -32,7 +32,7 @@ apt install -y libglib2.0-0
 ├── README.md               <- The top-level README for developers using this project.
 ├── VERSION                 <- Version file indicating the version of the model
 │
-├── socib_beach_wracks_identification_api
+├── socib_beach_wracks_identification
 │   ├── README.md           <- Instructions on how to integrate your model with DEEPaaS.
 │   ├── __init__.py         <- Makes socib-beach-wracks-identification a Python module
 │   ├── config.py           <- Module to define CONSTANTS used across the AI-model python package

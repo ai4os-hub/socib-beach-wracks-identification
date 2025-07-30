@@ -7,7 +7,7 @@ All functions here are optional and you can add or remove them as you need.
 """
 
 import logging
-import socib_beach_wracks_identification_api.config as cfg
+import socib_beach_wracks_identification.config as cfg
 
 import yaml
 import os
@@ -29,7 +29,7 @@ import mlflow.pyfunc
 import torch
 
 from mlflow.models import infer_signature
-from socib_beach_wracks_identification_api import config
+from socib_beach_wracks_identification import config
 
 
 logger = logging.getLogger(__name__)
