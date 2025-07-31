@@ -79,12 +79,11 @@ class PredArgsSchema(marshmallow.Schema):
     )
     task_type = fields.Str(
         metadata={
-            "description": "The type of task for load the pretrained model:\n"
-            '"seg" for object segmentation model\n'
-            'The one available is "seg"',
+            "description": "The type of task for load the pretrained model.\n"
+            'The one available is "seg", for instance segmentation',
             "enum": config.YOLO_DEFAULT_TASK_TYPE,
         },
-        load_default=config.YOLO_DEFAULT_TASK_TYPE[0],
+        load_default=config.YOLO_DEFAULT_TASK_TYPE,
     )
 
     imgsz = fields.List(
@@ -125,13 +124,14 @@ class PredArgsSchema(marshmallow.Schema):
         load_default=True,
     )
 
-    augment = fields.Boolean(
-        metadata={
-            "description": "Apply image augmentation to prediction sources. "
-            "augment for segmentation has not supported yet.",
-        },
-        load_default=False,
-    )
+    #augment = fields.Boolean(
+    #    metadata={
+    #        "description": "Apply image augmentation to prediction sources. "
+    #        "augment for segmentation has not supported yet.",
+    #    },
+    #    load_default=False,
+    #)
+
     classes = fields.List(
         fields.Int(),
         metadata={
@@ -168,12 +168,11 @@ class TrainArgsSchema(marshmallow.Schema):
 
     task_type = fields.Str(
         metadata={
-            "description": "The type of task for the model:\n"
-            '"seg" for object segmentation model\n'
-            'The one available is "seg"',
+            "description": "The type of task for load the pretrained model.\n"
+            'The one available is "seg", for instance segmentation',
             "enum": config.YOLO_DEFAULT_TASK_TYPE,
         },
-        load_default="det",
+        load_default="seg",
     )
 
     model = fields.Str(
