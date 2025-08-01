@@ -3,8 +3,8 @@ title: SOCIB Beach Wracks Identification
 summary: A deployable AI module for beach wrack monitoring based on YOLO
 description: |-
 
-  **The Balearic Islands Coastal Observing and Forecasting System** ([SOCIB]((https://www.socib.es/))) operates a multi-platform system in the western Mediterranean to provide reliable data and expert advice.
-  
+  **The Balearic Islands Coastal Observing and Forecasting System** ([SOCIB](https://www.socib.es/)) operates a multi-platform system in the western Mediterranean to provide reliable data and expert advice.
+
   **Beach wracks** are onshore depositions of detached marine vegetation such as seagrass, that accumulate on shorelines. These accumulations play a role in beach and foredune dynamics, but the presence of wracks often conflicts with tourism, presenting a complex management challenge that requires effective monitoring.
    
   The **SOCIB Beach Wracks Identification** module is an AI-based application that automates the detection and segmentation of beach wracks from RGB images, with the ability to differentiate between various densities of wrack accumulation. See examples of input(top) and output(bottom) images below:
