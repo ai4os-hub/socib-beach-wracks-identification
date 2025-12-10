@@ -160,42 +160,6 @@ The `train`, `val` and `test` fields specify the paths to the directories contai
 
 ><span style="color:Blue">**Note:**</span> The default model was trained with rather small images (640x480) to avoid downsampling in YOLO training. A sample of the data and the folder structure for training the model is provided in `/socib_beach_wracks_identification/tests/data/seg`. To re-train the model with your own data, place it under `/socib_beach_wracks_identification/data/processed`. 
 
-# 📦 Available Models
-
-You can train your project using various Ultralytics YOLO models optimized for segmentation.
-To use a specific version and size, simply select one from the options below and pass it as a training argument. The corresponding model will be automatically loaded for training.
-
-``` 
-"yolov8n.yaml",
-"yolov8n.pt",
-"yolov8s.yaml",
-"yolov8s.pt",
-"yolov8m.yaml",
-"yolov8m.pt",
-"yolov8l.yaml",
-"yolov8l.pt",
-"yolov8x.yaml",
-"yolov8x.pt",
-
-"yolov9c.yaml",
-"yolov9c.pt",
-"yolov9e.yaml",
-"yolov9e.pt",
-
-"yolo11n.yaml",
-"yolo11n.pt",
-"yolo11s.yaml",
-"yolo11s.pt",
-"yolo11m.yaml",
-"yolo11m.pt",
-"yolo11l.yaml",
-"yolo11l.pt",
-"yolo11x.yaml",
-"yolo11x.pt", 
-```
-`yoloX.yaml` bulid a model from scratch and
-`yoloX.pt` load a pretrained model (recommended for training)
-
 # 🚀 Launching the API
 
 To train the model, run:
