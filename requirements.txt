@@ -1,9 +1,9 @@
 ## DEEPaaS framework requirements
-deepaas~=2.5.2
+deepaas>=2.6.0
 webargs~=5.5.3
 flaat~=1.1.18
 ## external requirements
-ultralytics~=8.2
+ultralytics>=8.2
 PyPDF3~=1.0.6
 defusedxml~=0.5.0
 ## Optional tools
