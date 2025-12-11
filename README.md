@@ -13,7 +13,7 @@ To launch the API, first, install the package, and then run DeepaaS:
 git clone --depth 1 https://github.com/ai4os-hub/socib-beach-wracks-identification.git
 cd  socib-beach-wracks-identification
 pip install -e .
-deepaas-run --listen-ip 0.0.0.0
+deepaas-run --listen-ip 0.0.0.0 --config-file deepaas.conf
 ```
 
 ><span style="color:Blue">**Note:**</span> Before installing the API, please make sure to install the following system packages: `gcc`, `libgl1`, and `libglib2.0-0` as well. These packages are essential for a smooth installation process and proper functioning of the framework.
