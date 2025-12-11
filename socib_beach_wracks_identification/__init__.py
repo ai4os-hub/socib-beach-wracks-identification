@@ -11,12 +11,13 @@ from your_module import your_function as training
 ```
 """
 
-# TODO: add your imports here
 import logging
-import socib_beach_wracks_identification.config as cfg
-from ultralytics import YOLO
-import socib_beach_wracks_identification.utils as utils
 import os
+
+from ultralytics import YOLO
+
+import socib_beach_wracks_identification.config as cfg
+import socib_beach_wracks_identification.utils as utils
 
 logger = logging.getLogger(__name__)
 logger.setLevel(cfg.LOG_LEVEL)
@@ -30,9 +31,6 @@ def warm(
     """Main/public method to start up the model"""
     # if necessary, start the model
     pass
-
-
-# TODO: predict
 
 
 def predict(
@@ -57,12 +55,7 @@ def predict(
         )
         utils.remove_keys_from_dict(
             args,
-            [
-                "files",
-                "accept",
-                "task_type",
-                "mlflow_fetch"
-            ],
+            ["files", "accept", "task_type"],
         )
         result = model.predict(
             image_path,
