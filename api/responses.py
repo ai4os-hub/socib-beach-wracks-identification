@@ -3,16 +3,18 @@ Module for defining custom API response parsers and content types.
 This module is used by the API server to convert the output of the
 requested method into the desired format.
 """
-import logging
-from PIL import Image
-import numpy as np
-import cv2
-from io import BytesIO
-from . import config
-import tempfile
-from PyPDF3 import PdfFileMerger
-import os
+
 import json
+import logging
+import os
+import tempfile
+from io import BytesIO
+
+import cv2
+from PIL import Image
+from PyPDF3 import PdfFileMerger
+
+from . import config
 
 logger = logging.getLogger(__name__)
 logger.setLevel(config.LOG_LEVEL)
@@ -39,11 +41,7 @@ def json_response(results, **options):
     try:
         for element in results[0]:
             # Use the proper `to_json` method to serialize each result
-            prediction = (
-                element.to_json()
-                if hasattr(element, "to_json")
-                else element
-            )
+            prediction = element.to_json() if hasattr(element, "to_json") else element
             if isinstance(prediction, str):
                 # Convert stringified JSON to actual JSON
                 prediction = json.loads(prediction)
@@ -133,9 +131,7 @@ def create_video_in_buffer(frame_arrays, output_format="mp4"):
         suffix="." + output_format, delete=False
     ) as temp_file:
         temp_filename = temp_file.name
-        out = cv2.VideoWriter(
-            temp_filename, fourcc, 20.0, (width, height)
-        )
+        out = cv2.VideoWriter(temp_filename, fourcc, 20.0, (width, height))
 
         for frame in frame_arrays:
             out.write(frame)
