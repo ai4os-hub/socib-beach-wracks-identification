@@ -1,5 +1,3 @@
-version: "3.6"
-
 services:
   thisrepo-testing:
     image: "mteamkit/cicd-python-gl"
