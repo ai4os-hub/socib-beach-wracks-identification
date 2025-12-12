@@ -19,7 +19,6 @@ the same folder. However, remember to add the prefix `test_` to the file.
 # pylint: disable=redefined-outer-name
 # pylint: disable=unused-argument
 
-
 import json
 import io
 
@@ -41,9 +40,9 @@ def test_prediction(test_predict):
                 for key in ["name", "class", "box"]
                 if key not in result[0][0]
             ]
-            assert (
-                not missing_keys
-            ), f"Expected keys {missing_keys} missing in result"
+            assert not missing_keys, (
+                f"Expected keys {missing_keys} missing in result"
+            )
             result = result[0]
         else:
             missing_keys = [
@@ -51,9 +50,9 @@ def test_prediction(test_predict):
                 for key in ["file_name", "top5_prediction"]
                 if key not in result[0].keys()
             ]
-            assert (
-                not missing_keys
-            ), f"Expected keys {missing_keys} missing in result"
+            assert not missing_keys, (
+                f"Expected keys {missing_keys} missing in result"
+            )
             result = json.dumps(result)
 
 

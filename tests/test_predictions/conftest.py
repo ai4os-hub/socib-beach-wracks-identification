@@ -39,16 +39,16 @@ number of tests generated can grow exponentially.
 """
 
 # pylint: disable=redefined-outer-name
-import pytest
+import fnmatch
 import os
+
+import pytest
 from deepaas.model.v2.wrapper import UploadedFile
+
 import api
 from api import config
-import fnmatch
 
-DATA_FILES = os.listdir(
-    os.path.join(config.TEST_DATA_PATH, "seg/test")
-)
+DATA_FILES = os.listdir(os.path.join(config.TEST_DATA_PATH, "seg/test"))
 
 
 # Fixture for the 'files' parameter@pytest.fixture(
@@ -69,11 +69,6 @@ def files(request):
 # Fixture for the 'model' parameter
 @pytest.fixture(scope="module", params=[config.DEFAULT_MODEL_PATH])
 def model_param(request):
-    return request.param
-
-
-@pytest.fixture(scope="module", params=[False])
-def mlflow_fetch(request):
     return request.param
 
 
@@ -144,7 +139,6 @@ def pred_kwds(
     classes_param,
     boxes_param,
     accept_param,
-    mlflow_fetch,
 ):
     """Fixture to return arbitrary keyword arguments for predictions."""
     pred_kwds = {
@@ -159,7 +153,6 @@ def pred_kwds(
         "classes": classes_param,
         "boxes": boxes_param,
         "accept": accept_param,
-        "mlflow_fetch": mlflow_fetch,
     }
     print(f"the args for detections are {pred_kwds}")
     return {k: v for k, v in pred_kwds.items()}

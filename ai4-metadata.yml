@@ -20,7 +20,7 @@ description: |-
 
 dates:
   created: '2025-07-03'
-  updated: '2024-07-03'
+  updated: '2025-12-12'
 links:
   source_code: https://github.com/ai4os-hub/socib-beach-wracks-identification
   docker_image: ai4oshub/socib-beach-wracks-identification
@@ -37,7 +37,6 @@ tasks:
   - Other
 categories:
   - AI4 pre trained
-  - AI4 trainable
   - AI4 inference
 libraries:
   - PyTorch
