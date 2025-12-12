@@ -44,6 +44,13 @@ def predict(
     """Main/public method to perform prediction"""
     print("arg of prediction are", args)
 
+    image_size = args.get("imgsz", [640, 480])
+    if len(image_size) != 2:
+        raise ValueError(
+            "For SAHI inference, please provide image size as "
+            "a list of two integers: [slice_height, slice_width]."
+        )
+
     if args["sahi"]:
         return predict_sahi(**args)
 
@@ -73,10 +80,9 @@ def predict_sahi(**args):
     """Main/public method to perform prediction with SAHI"""
 
     device = (
-        torch.device("cuda:0")
-        if torch.cuda.is_available()
-        else torch.device("cpu")
+        torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
     )
+    device = "cpu"
 
     detection_model = AutoDetectionModel.from_pretrained(
         model_type="ultralytics",
@@ -88,8 +94,8 @@ def predict_sahi(**args):
     sahi_result = get_sliced_prediction(
         image=args["files"][0],
         detection_model=detection_model,
-        slice_height=256,
-        slice_width=256,
+        slice_height=args["imgsz"][0],
+        slice_width=args["imgsz"][1],
         overlap_height_ratio=0.2,
         overlap_width_ratio=0.2,
     )

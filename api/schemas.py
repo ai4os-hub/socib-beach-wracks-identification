@@ -79,21 +79,15 @@ class PredArgsSchema(marshmallow.Schema):
         load_default=False,
     )
 
-    task_type = fields.Str(
-        metadata={
-            "description": "The type of task for load the pretrained model.\n"
-            'The one available is "seg", for instance segmentation',
-            "enum": config.YOLO_DEFAULT_TASK_TYPE,
-        },
-        load_default=config.YOLO_DEFAULT_TASK_TYPE,
-    )
-
     imgsz = fields.List(
         fields.Int(),
         validate=validate.Length(max=2),
         metadata={
-            "description": "image size as scalar or (h, w) list,"
-            " i.e. (640, 480). Note: must be multiple of max stride 32"
+            "description": "Dimensions for inference.\n"
+            "1. Standard inference: Target size to resize the input image "
+            "(e.g. [640, 640]).\n"
+            "2. SAHI inference: Size of the slicing window (slice_height, "
+            "slice_width). Ideally matches the model's trained resolution."
         },
         load_default=[640, 480],
     )
@@ -123,14 +117,6 @@ class PredArgsSchema(marshmallow.Schema):
         },
         load_default=True,
     )
-
-    # augment = fields.Boolean(
-    #    metadata={
-    #        "description": "Apply image augmentation to prediction sources. "
-    #        "augment for segmentation has not supported yet.",
-    #    },
-    #    load_default=False,
-    # )
 
     classes = fields.List(
         fields.Int(),
