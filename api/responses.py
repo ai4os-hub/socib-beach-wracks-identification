@@ -41,7 +41,9 @@ def json_response(results, **options):
     try:
         for element in results[0]:
             # Use the proper `to_json` method to serialize each result
-            prediction = element.to_json() if hasattr(element, "to_json") else element
+            prediction = (
+                element.to_json() if hasattr(element, "to_json") else element
+            )
             if isinstance(prediction, str):
                 # Convert stringified JSON to actual JSON
                 prediction = json.loads(prediction)

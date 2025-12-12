@@ -54,10 +54,13 @@ DATA_FILES = os.listdir(os.path.join(config.TEST_DATA_PATH, "seg/test"))
 # Fixture for the 'files' parameter@pytest.fixture(
 @pytest.fixture(
     scope="module",
-    params=fnmatch.filter(DATA_FILES, "*.jpg") + fnmatch.filter(DATA_FILES, "*.png"),
+    params=fnmatch.filter(DATA_FILES, "*.jpg")
+    + fnmatch.filter(DATA_FILES, "*.png"),
 )
 def files(request):
-    file = os.path.join(os.path.join(config.TEST_DATA_PATH, "seg/test"), request.param)
+    file = os.path.join(
+        os.path.join(config.TEST_DATA_PATH, "seg/test"), request.param
+    )
 
     content_type = "application/octet-stream"
     return UploadedFile("files", file, content_type, request.param)

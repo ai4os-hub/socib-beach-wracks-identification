@@ -71,16 +71,22 @@ def predict(**args):
 
         else:
             path = os.path.join(args["model"], "weights/best.pt")
-            args["model"] = utils.validate_and_modify_path(path, config.MODELS_PATH)
+            args["model"] = utils.validate_and_modify_path(
+                path, config.MODELS_PATH
+            )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             for f in [args["files"]]:
                 shutil.copy(
                     f.filename,
-                    tmpdir + "/" + os.path.basename(f.original_filename),  # nolint
+                    tmpdir
+                    + "/"
+                    + os.path.basename(f.original_filename),  # nolint
                 )
 
-            args["files"] = [os.path.join(tmpdir, t) for t in os.listdir(tmpdir)]
+            args["files"] = [
+                os.path.join(tmpdir, t) for t in os.listdir(tmpdir)
+            ]
             result = aimodel.predict(**args)
             logger.debug("Predict result: %s", result)
             logger.info("Returning content_type for: %s", args["accept"])

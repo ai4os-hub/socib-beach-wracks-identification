@@ -14,7 +14,9 @@ from importlib import metadata
 from pathlib import Path
 
 # Default AI model
-MODEL_NAME = os.getenv("MODEL_NAME", default="socib_beach_wracks_identification")
+MODEL_NAME = os.getenv(
+    "MODEL_NAME", default="socib_beach_wracks_identification"
+)
 
 # Get AI model metadata
 MODEL_METADATA = metadata.metadata(MODEL_NAME)

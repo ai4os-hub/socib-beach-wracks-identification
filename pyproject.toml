@@ -44,3 +44,6 @@ version = { file = "VERSION" }
 
 [project.entry-points."deepaas.v2.model"]
 socib_beach_wracks_identification = "socib_beach_wracks_identification.api"
+
+[tool.ruff]
+line-length = 79

@@ -31,7 +31,7 @@ ENV LANG=C.UTF-8
 # Set the working directory
 WORKDIR /srv
 
-ARG branch=refactor/remove-training
+ARG branch=main
 # Install user app
 RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/socib-beach-wracks-identification.git && \
     cd socib-beach-wracks-identification && \
