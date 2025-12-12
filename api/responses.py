@@ -39,7 +39,7 @@ def json_response(results, **options):
     logger.debug("Response options: %s", options)
 
     try:
-        for element in results[0]:
+        for element in results:
             # Use the proper `to_json` method to serialize each result
             prediction = (
                 element.to_json() if hasattr(element, "to_json") else element
@@ -74,16 +74,17 @@ def pdf_response(results, **options):
 
     try:
         merger = PdfFileMerger()
-        for element in results[0]:
-            # result.append(element.plot())
-            im = Image.fromarray(
-                element.plot(
-                    labels=options["show_labels"],
-                    conf=options["show_conf"],
-                    boxes=options["show_boxes"],
-                )
+        for element in results:
+            plot_array = element.plot(
+                labels=options["show_labels"],
+                conf=options["show_conf"],
+                boxes=options["show_boxes"],
             )
+            plot_array = plot_array[..., ::-1]
+
+            im = Image.fromarray(plot_array)
             im = im.convert("RGB")
+
             buffer = BytesIO()
             buffer.name = "output.pdf"
             im.save(buffer)
@@ -104,7 +105,7 @@ def png_response(results, **options):
     logger.debug("Response result: %d", results)
     logger.debug("Response options: %d", options)
     try:
-        for result in results[0]:
+        for result in results:
             # this will return a numpy array with the labels
             result = result.plot(
                 labels=options["show_labels"],

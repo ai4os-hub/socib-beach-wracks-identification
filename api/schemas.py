@@ -68,6 +68,17 @@ class PredArgsSchema(marshmallow.Schema):
         load_default=config.YOLO_DEFAULT_WEIGHTS[0],
     )
 
+    sahi = fields.Boolean(
+        metadata={
+            "description": "Whether to use Sahi for large image "
+            "inference by splitting the image into smaller "
+            "overlapping patches. Useful for high-resolution "
+            "images where objects may be small relative to "
+            "the overall image size."
+        },
+        load_default=False,
+    )
+
     task_type = fields.Str(
         metadata={
             "description": "The type of task for load the pretrained model.\n"
