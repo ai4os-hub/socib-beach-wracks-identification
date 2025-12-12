@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "socib_beach_wracks_identification"
-description = "DESCRIPTION"
+description = "YOLO-seg based application for AI-driven beach wrack identification"
 # !! Authors and Authors_emails are taken from setup.py. Otherwise wrongly rendered !!
 readme = "README.md"
 requires-python = ">=3.8"
