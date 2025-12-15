@@ -54,13 +54,10 @@ DATA_FILES = os.listdir(os.path.join(config.TEST_DATA_PATH, "seg/test"))
 # Fixture for the 'files' parameter@pytest.fixture(
 @pytest.fixture(
     scope="module",
-    params=fnmatch.filter(DATA_FILES, "*.jpg")
-    + fnmatch.filter(DATA_FILES, "*.png"),
+    params=fnmatch.filter(DATA_FILES, "*.jpg") + fnmatch.filter(DATA_FILES, "*.png"),
 )
 def files(request):
-    file = os.path.join(
-        os.path.join(config.TEST_DATA_PATH, "seg/test"), request.param
-    )
+    file = os.path.join(os.path.join(config.TEST_DATA_PATH, "seg/test"), request.param)
 
     content_type = "application/octet-stream"
     return UploadedFile("files", file, content_type, request.param)
@@ -126,6 +123,18 @@ def accept_param(request):
     return request.param
 
 
+# Fixture for the 'sahi' parameter
+@pytest.fixture(scope="module", params=[True, False])
+def sahi_param(request):
+    return request.param
+
+
+# Fixture for the 'imgsz' parameter
+@pytest.fixture(scope="module", params=[[640, 640]])
+def imgsz_param(request):
+    return request.param
+
+
 @pytest.fixture(scope="module")
 def pred_kwds(
     files,
@@ -139,6 +148,8 @@ def pred_kwds(
     classes_param,
     boxes_param,
     accept_param,
+    sahi_param,
+    imgsz_param,
 ):
     """Fixture to return arbitrary keyword arguments for predictions."""
     pred_kwds = {
@@ -153,6 +164,8 @@ def pred_kwds(
         "classes": classes_param,
         "boxes": boxes_param,
         "accept": accept_param,
+        "sahi": sahi_param,
+        "imgsz": imgsz_param,
     }
     print(f"the args for detections are {pred_kwds}")
     return {k: v for k, v in pred_kwds.items()}

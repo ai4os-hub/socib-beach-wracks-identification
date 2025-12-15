@@ -51,7 +51,7 @@ def predict(
             "a list of two integers: [slice_height, slice_width]."
         )
 
-    if args["sahi"]:
+    if args.get("sahi", False):
         return predict_sahi(**args)
 
     model = YOLO(args["model"])
