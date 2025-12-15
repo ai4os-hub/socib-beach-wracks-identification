@@ -4,6 +4,8 @@ webargs~=5.5.3
 flaat~=1.1.18
 ## external requirements
 ultralytics>=8.2
+polars[rtcompat]
+
 PyPDF3~=1.0.6
 defusedxml~=0.5.0
 ## Optional tools
@@ -11,5 +13,3 @@ pynvml==12.0.0
 
 sahi>=0.11.36
 torch
-
-polars-lts-cpu

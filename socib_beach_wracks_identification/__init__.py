@@ -79,10 +79,7 @@ def predict(
 def predict_sahi(**args):
     """Main/public method to perform prediction with SAHI"""
 
-    device = (
-        torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
-    )
-    device = "cpu"
+    device = torch.device("cuda:0") if torch.cuda.is_available() else "cpu"
 
     detection_model = AutoDetectionModel.from_pretrained(
         model_type="ultralytics",

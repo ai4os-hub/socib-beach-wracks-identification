@@ -6,7 +6,8 @@ import numpy as np
 
 class SahiCustomResult:
     """
-    Wrapper for SAHI prediction results to provide custom JSON output and plotting.
+    Wrapper for SAHI prediction results to provide custom JSON output
+    and plotting.
     """
 
     def __init__(self, sahi_result, original_image):
@@ -24,7 +25,10 @@ class SahiCustomResult:
         return self.colors[class_id]
 
     def to_json(self):
-        """Generates the JSON output with bounding boxes and segmentation polygons."""
+        """
+        Generates the JSON output with bounding boxes and segmentation
+        polygons.
+        """
         predictions = []
         for pred in self.object_prediction_list:
             bbox = pred.bbox.to_xyxy()
