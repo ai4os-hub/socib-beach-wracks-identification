@@ -68,21 +68,26 @@ class PredArgsSchema(marshmallow.Schema):
         load_default=config.YOLO_DEFAULT_WEIGHTS[0],
     )
 
-    task_type = fields.Str(
+    sahi = fields.Boolean(
         metadata={
-            "description": "The type of task for load the pretrained model.\n"
-            'The one available is "seg", for instance segmentation',
-            "enum": config.YOLO_DEFAULT_TASK_TYPE,
+            "description": "Whether to use Sahi for large image "
+            "inference by splitting the image into smaller "
+            "overlapping patches. Useful for high-resolution "
+            "images where objects may be small relative to "
+            "the overall image size."
         },
-        load_default=config.YOLO_DEFAULT_TASK_TYPE,
+        load_default=False,
     )
 
     imgsz = fields.List(
         fields.Int(),
         validate=validate.Length(max=2),
         metadata={
-            "description": "image size as scalar or (h, w) list,"
-            " i.e. (640, 480). Note: must be multiple of max stride 32"
+            "description": "Dimensions for inference.\n"
+            "1. Standard inference: Target size to resize the input image "
+            "(e.g. [640, 640]).\n"
+            "2. SAHI inference: Size of the slicing window (slice_height, "
+            "slice_width). Ideally matches the model's trained resolution."
         },
         load_default=[640, 480],
     )
@@ -113,24 +118,16 @@ class PredArgsSchema(marshmallow.Schema):
         load_default=True,
     )
 
-    # augment = fields.Boolean(
-    #    metadata={
-    #        "description": "Apply image augmentation to prediction sources. "
-    #        "augment for segmentation has not supported yet.",
-    #    },
-    #    load_default=False,
+    # classes = fields.List(
+    #     fields.Int(),
+    #     metadata={
+    #         "description": "Filter results by class, i.e. class=0, "
+    #         "or class=[0,2,3]. Only detections belonging to the "
+    #         "specified classes will be returned. Useful for focusing"
+    #         " on relevant objects in multi-class detection."
+    #     },
+    #     load_default=None,
     # )
-
-    classes = fields.List(
-        fields.Int(),
-        metadata={
-            "description": "Filter results by class, i.e. class=0, "
-            "or class=[0,2,3]. Only detections belonging to the "
-            "specified classes will be returned. Useful for focusing"
-            " on relevant objects in multi-class detection."
-        },
-        load_default=None,
-    )
 
     show_boxes = fields.Boolean(
         metadata={"description": "Show boxes in segmentation predictions"},
