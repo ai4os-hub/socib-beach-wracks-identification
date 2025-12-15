@@ -87,7 +87,7 @@ def predict_sahi(**args):
     detection_model = AutoDetectionModel.from_pretrained(
         model_type="ultralytics",
         model_path=args["model"],
-        confidence_threshold=0.3,
+        confidence_threshold=args["conf"],
         device=device,
     )
 

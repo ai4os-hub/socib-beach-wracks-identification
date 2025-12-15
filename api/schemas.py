@@ -118,16 +118,16 @@ class PredArgsSchema(marshmallow.Schema):
         load_default=True,
     )
 
-    classes = fields.List(
-        fields.Int(),
-        metadata={
-            "description": "Filter results by class, i.e. class=0, "
-            "or class=[0,2,3]. Only detections belonging to the "
-            "specified classes will be returned. Useful for focusing"
-            " on relevant objects in multi-class detection."
-        },
-        load_default=None,
-    )
+    # classes = fields.List(
+    #     fields.Int(),
+    #     metadata={
+    #         "description": "Filter results by class, i.e. class=0, "
+    #         "or class=[0,2,3]. Only detections belonging to the "
+    #         "specified classes will be returned. Useful for focusing"
+    #         " on relevant objects in multi-class detection."
+    #     },
+    #     load_default=None,
+    # )
 
     show_boxes = fields.Boolean(
         metadata={"description": "Show boxes in segmentation predictions"},
