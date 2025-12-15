@@ -21,7 +21,7 @@ class SahiCustomResult:
         """Returns a fixed color for each class_id."""
         if class_id not in self.colors:
             random.seed(class_id)
-            self.colors[class_id] = [random.randint(0, 255) for _ in range(3)]
+            self.colors[class_id] = [random.randint(0, 255) for _ in range(3)]  # nosec B311
         return self.colors[class_id]
 
     def to_json(self):
@@ -98,9 +98,7 @@ class SahiCustomResult:
                     mask_layer[mask_bool] = color
 
         if shapes_found:  # Add alpha blending only if there are masks
-            cv2.addWeighted(
-                mask_layer, alpha, img_result, 1 - alpha, 0, img_result
-            )
+            cv2.addWeighted(mask_layer, alpha, img_result, 1 - alpha, 0, img_result)
 
         # Draw boxes and labels on top of masks
         if boxes or labels or conf:
@@ -125,9 +123,7 @@ class SahiCustomResult:
                             label_text, 0, fontScale=0.5, thickness=1
                         )[0]
                         c2 = x1 + t_size[0], y1 - t_size[1] - 3
-                        cv2.rectangle(
-                            img_result, (x1, y1), c2, color, -1, cv2.LINE_AA
-                        )
+                        cv2.rectangle(img_result, (x1, y1), c2, color, -1, cv2.LINE_AA)
                         cv2.putText(
                             img_result,
                             label_text,
