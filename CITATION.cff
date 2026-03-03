@@ -1,0 +1,58 @@
+cff-version: 1.2.0
+title: SOCIB Beach wracks identification
+message: >-
+  A deployable AI module for beach wrack monitoring based on
+  YOLO
+type: software
+authors:
+  - given-names: Jesús
+    family-names: Soriano-González
+    email: jsoriano@socib.es
+    affiliation: >-
+      Balearic Islands Coastal Observing and Forecasting
+      System (SOCIB)
+    orcid: 'https://orcid.org/0000-0001-6573-3924'
+  - given-names: Josep
+    family-names: Oliver-Sansó
+    email: joliver@socib.es
+    affiliation: >-
+      Balearic Islands Coastal Observing and Forecasting
+      System (SOCIB)
+    orcid: 'https://orcid.org/0009-0006-9040-9118'
+  - given-names: Fahimeh
+    family-names: Alibabaei
+    email: khadijeh.alibabaei@kit.edu
+    affiliation: >-
+      Karlsruhe Institute of Technology (KIT)
+    orcid: 'https://orcid.org/0000-0002-2319-8211'
+  - name: >-
+      Balearic Islands Coastal Observing and Forecasting
+      System
+    address: >-
+      Isaac Newton St., Naorte Building, Block A, Floor 2,
+      Door 3
+    city: Palma
+    country: ES
+    post-code: '07121'
+    location: Parc Bit
+    region: Balearic Islands
+    alias: SOCIB
+    website: 'https://www.socib.es'
+repository-code: >-
+  https://github.com/ai4os-hub/socib-beach-wracks-identification/
+abstract: >+
+  The SOCIB Beach Wracks Identification module is an
+  AI-based application that automates the detection and
+  segmentation of beach wracks from RGB images, with the
+  ability to differentiate between various densities of
+  wrack accumulation.
+
+keywords:
+  - Deep Learning
+  - Computer Vision
+  - Beach Monitoring
+  - Beach Wracks Identification
+license: AGPL-3.0
+commit: b2a3d42d873ae4672d5e1ef046aff9758bdd620c
+version: 0.0.1
+date-released: '2025-08-01'
