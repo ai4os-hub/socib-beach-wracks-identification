@@ -15,7 +15,7 @@ The underlying model (yolo11m-seg) was trained on the [BWILD dataset](https://do
 To run the Docker container directly from Docker Hub and start using the API, simply run the following command:
 
 ```bash
-$ docker run -ti -p 5000:5000 ai4oshub/socib-beach-wracks-identification
+docker run -ti -p 5000:5000 ai4oshub/socib-beach-wracks-identification
 ```
 
 This command will pull the Docker container from the Docker Hub [ai4oshub](https://hub.docker.com/u/ai4oshub/) repository and start the default command (`deepaas-run --listen-ip=0.0.0.0`).
