@@ -13,6 +13,7 @@ from io import BytesIO
 import cv2
 from PIL import Image
 from PyPDF3 import PdfFileMerger
+import numpy as np
 
 from . import config
 
@@ -126,6 +127,67 @@ def png_response(results, **options):
         raise RuntimeError("Unsupported response type") from err
 
 
+def mask_response(results, **options):
+    logger.debug("Response result type: %s", type(results))
+    logger.debug("Response options: %s", options)
+
+    CLASS_TO_GRAY = {
+        0: 255,  # White for dense wracks
+        1: 128,  # Gray for intermediate wracks
+    }
+
+    try:
+        for result in results:
+            if result.masks is not None:
+                # Get masks shape (N, H, W) and class IDs shape (N,)
+                masks = result.masks.data.cpu().numpy()
+                class_ids = result.boxes.cls.cpu().numpy().astype(int)
+
+                # Create an empty single-channel image (grayscale) for the background (0)
+                H, W = masks.shape[1:]
+                combined_mask = np.zeros((H, W), dtype=np.uint8)
+
+                # Iterate over each detected mask
+                for i, mask in enumerate(masks):
+                    cls_id = class_ids[i]
+
+                    # Get the fixed grayscale value from the dictionary
+                    # Default to 0 (background) if the class ID is not found
+                    gray_value = CLASS_TO_GRAY.get(cls_id, 0)
+
+                    # Apply the gray value only where the mask confidence is > 0.5
+                    # and only if the gray_value is greater than 0
+                    if gray_value > 0:
+                        combined_mask = np.where(
+                            mask > 0.5, gray_value, combined_mask
+                        )
+
+                # Resize the final mask to match the original input image size
+                h_orig, w_orig = result.orig_shape
+
+                # INTER_NEAREST is strictly required to prevent smoothing/blurring at the edges
+                final_image = cv2.resize(
+                    combined_mask,
+                    (w_orig, h_orig),
+                    interpolation=cv2.INTER_NEAREST,
+                )
+            else:
+                h_orig, w_orig = result.orig_shape
+                final_image = np.zeros((h_orig, w_orig), dtype=np.uint8)
+
+            success, buffer = cv2.imencode(".png", final_image)
+            if not success:
+                return "Error encoding image", 500
+
+            # Create a BytesIO object and write the buffer into it
+            image_buffer = BytesIO(buffer)
+
+        return image_buffer
+    except Exception as err:
+        logger.warning("Error converting result to mask png: %s", err)
+        raise RuntimeError("Unsupported response type") from err
+
+
 def create_video_in_buffer(frame_arrays, output_format="mp4"):
     height, width, _ = frame_arrays[0].shape
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
@@ -182,8 +244,9 @@ def mp4_response(results, **options):
 
 response_parsers = {
     "application/json": json_response,
-    "application/pdf": pdf_response,
+    # "application/pdf": pdf_response,
     "image/png": png_response,
-    "video/mp4": mp4_response,
+    "image/mask": mask_response,
+    # "video/mp4": mp4_response,
 }
 content_types = list(response_parsers)
