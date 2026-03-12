@@ -42,7 +42,8 @@ Once the container is up and running, browse to http://0.0.0.0:5000/ui to get th
 
 If you want a detailed, step-by-step example of how to send requests to the prediction endpoint, configure inference parameters (like SAHI and confidence), and process the results in memory, check out our interactive guide:
 
-**[API Prediction Tutorial: Python & Requests](notebooks/01_api_tutorial.ipynb)**
+
+**[ 🧑‍🎓 API Tutorial: Find beach wracks in your images!](notebooks/01_Wrack_Detection_Tutorial.ipynb)**
 
 ## 📂 Project structure
 ```
