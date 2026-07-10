@@ -85,8 +85,7 @@ If you want a detailed, step-by-step example of how to send requests to the pred
 This work was supported by ‘iMagine’ (Grant Agreement No.101058625) and ‘FOCCUS’ (Grant Agreement No.101133911) European Union funded projects. Views and opinions expressed are however those of the authors only and do not necessarily reflect those of the European Union or the European Health and Digital Executive Agency (HaDEA).
 
 ## 📚 References
-
+- [Soriano-González, J., et al. (2026) – Machine learning-driven shoreline extraction and beach seagrass wrack detection from beach imaging systems](https://link.springer.com/chapter/10.1007/978-3-032-15477-4_62)
 - [BWILD – Beach seagrass Wrack Identification Labelled Dataset](https://doi.org/10.5281/zenodo.12698763)
-- [Soriano-González, J., et al. (2025) – Machine learning-driven shoreline extraction and beach seagrass wrack detection from beach imaging systems](https://coastaldynamics25.web.ua.pt/)
 - [Ultralytics YOLO Documentation](https://docs.ultralytics.com/)
 - [Akyon, F. et al. (2022) - Slicing Aided Hyper Inference and Fine-tuning for Small Object Detection](https://doi.org/10.1109/ICIP46576.2022.9897990)
