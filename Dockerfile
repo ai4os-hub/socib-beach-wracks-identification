@@ -29,14 +29,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 ENV LANG=C.UTF-8
 
 # Set the working directory
-WORKDIR /srv
+WORKDIR /srv/socib-beach-wracks-identification
 
-ARG branch=main
+# Copy local repository files to the container
+COPY . .
+
 # Install user app
-RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/socib-beach-wracks-identification.git && \
-    cd socib-beach-wracks-identification && \
-    pip3 install --no-cache-dir -e . && \
-    cd ..
+RUN pip3 install --no-cache-dir -e .
 
 # Open ports (deepaas, monitoring, ide)
 EXPOSE 5000

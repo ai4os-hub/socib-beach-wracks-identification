@@ -28,8 +28,8 @@ To build the container directly on your machine (for example, if you need to mod
 ```bash
 git clone https://github.com/ai4os-hub/socib-beach-wracks-identification
 cd socib-beach-wracks-identification
-docker build -t ai4oshub/socib-beach-wracks-identification .
-docker run -ti -p 5000:5000 ai4oshub/socib-beach-wracks-identification
+docker build -t socib-beach-wracks-identification .
+docker run -ti -p 5000:5000 socib-beach-wracks-identification
 ```
 
 These three steps will download the repository from GitHub and will build the Docker container locally on your machine. You can inspect and modify the `Dockerfile` in order to check what is going on. For instance, you can pass the `--debug=True` flag to the `deepaas-run` command, in order to enable the debug mode.
