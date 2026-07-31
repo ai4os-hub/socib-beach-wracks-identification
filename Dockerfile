@@ -12,7 +12,7 @@ ARG tag=2.9.1-cuda12.6-cudnn9-runtime
 FROM pytorch/pytorch:${tag}
 
 LABEL maintainer='Jesus Soriano-Gonzalez, Josep Oliver-Sanso'
-LABEL version='0.1.0'
+LABEL version='1.0.0'
 
 # Install Ubuntu packages
 # - gcc is needed in Pytorch images because deepaas installation might break otherwise
