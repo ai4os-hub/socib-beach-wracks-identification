@@ -21,8 +21,7 @@ from sahi.predict import get_sliced_prediction
 from ultralytics import YOLO
 
 import socib_beach_wracks_identification.config as cfg
-import socib_beach_wracks_identification.sahi_utils as sahi_utils
-import socib_beach_wracks_identification.utils as utils
+from socib_beach_wracks_identification import sahi_utils, utils
 
 logger = logging.getLogger(__name__)
 logger.setLevel(cfg.LOG_LEVEL)
@@ -35,7 +34,6 @@ def warm(
 ):
     """Main/public method to start up the model"""
     # if necessary, start the model
-    pass
 
 
 def predict(
@@ -88,6 +86,7 @@ def predict_sahi(**args):
         device=device,
     )
 
+    detection_model.model.overrides["iou"] = args["iou"]
     sahi_result = get_sliced_prediction(
         image=args["files"][0],
         detection_model=detection_model,
